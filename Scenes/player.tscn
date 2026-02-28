@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1g8k45bi8dg"]
+
+[ext_resource type="Script" uid="uid://b8rvc0yjc6iwc" path="res://Scripts/player.gd" id="1_cvnsp"]
+[ext_resource type="PackedScene" uid="uid://mq7wopjshvgd" path="res://Scenes/snake_middle.tscn" id="2_vgqql"]
+[ext_resource type="Texture2D" uid="uid://dmrm1hqy3kxis" path="res://Assets/SpriteHead2.png" id="4_vgqql"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
+size = Vector2(64, 32)
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 1
+collision_mask = 15
+script = ExtResource("1_cvnsp")
+segment_scene = ExtResource("2_vgqql")
+
+[node name="SnakeHead" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("4_vgqql")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_cvnsp")
+
+[node name="BodyContainer" type="Node2D" parent="."]

@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://e23lg7htgakd"]
+
+[ext_resource type="Texture2D" uid="uid://dn0afm2qd7hn7" path="res://Assets/background.png" id="1_ebmjs"]
+[ext_resource type="Script" uid="uid://y7yhhond0gew" path="res://Scripts/game.gd" id="1_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://16uoc2ah23o2" path="res://Scenes/food.tscn" id="2_3dryh"]
+[ext_resource type="PackedScene" uid="uid://d1g8k45bi8dg" path="res://Scenes/player.tscn" id="2_qxrlw"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_wrm1d")
+food_scene = ExtResource("2_3dryh")
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -3
+texture_repeat = 2
+position = Vector2(325, 326)
+scale = Vector2(4.3124995, 2.3732636)
+texture = ExtResource("1_ebmjs")
+region_enabled = true
+region_rect = Rect2(0, 0, 640, 640)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(641, 482)
+
+[node name="Player" parent="." instance=ExtResource("2_qxrlw")]
+position = Vector2(318, 322)

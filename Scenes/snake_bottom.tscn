@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkuu262n5r0fp"]
+
+[ext_resource type="Texture2D" uid="uid://ccerbtsd25a01" path="res://Assets/SnaketailBottom.png" id="1_resyy"]
+
+[node name="SnakeBottom" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -2
+scale = Vector2(2, 2)
+texture = ExtResource("1_resyy")
