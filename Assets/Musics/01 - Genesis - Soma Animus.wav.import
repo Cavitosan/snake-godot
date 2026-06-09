@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bk0h5paqidr7b"
+path="res://.godot/imported/01 - Genesis - Soma Animus.wav-391dbb9d6b9079c6bffef560465d2e30.sample"
+
+[deps]
+
+source_file="res://Assets/Musics/01 - Genesis - Soma Animus.wav"
+dest_files=["res://.godot/imported/01 - Genesis - Soma Animus.wav-391dbb9d6b9079c6bffef560465d2e30.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

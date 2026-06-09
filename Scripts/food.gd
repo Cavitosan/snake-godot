@@ -2,8 +2,10 @@ extends Area2D
 class_name Food
 
 signal eaten
+@warning_ignore("unused_signal")
+signal destroyed # Emitido externamente pelo asteroide ao colidir
 
-const GRID_SIZE:= 30 #Um a menos para que não fique colado nos cantos da tela
+const GRID_SIZE:= 29 #Um a menos para que não fique colado nos cantos da tela
 
 var grid_position: Vector2i
 var pulse_tween: Tween
@@ -12,7 +14,9 @@ func update_position():
 	position = grid_position * GRID_SIZE
 
 func _ready():
+	randomize()
 	body_entered.connect(_on_body_entered)
+	random_planet()
 	start_pulse()
 
 func _on_body_entered(body):
@@ -42,3 +46,9 @@ func play_eat_animation():
 func _on_animation_finished():
 	eaten.emit()
 	queue_free()
+
+func random_planet():
+	var animations: Array[String] = ["planet1", "planet2", "planet3"]
+	var chosen: String = animations[randi() % animations.size()]
+	$Sprite2D.play(chosen)
+	

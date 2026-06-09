@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=3 uid="uid://dk77ctb8in3yb"]
+
+[ext_resource type="Texture2D" uid="uid://dn0afm2qd7hn7" path="res://Assets/background.png" id="1_1ehe0"]
+[ext_resource type="Script" uid="uid://dnvfic51sc07n" path="res://Scripts/main_menu.gd" id="1_ce3w2"]
+[ext_resource type="Texture2D" uid="uid://dgdcagwil3sdx" path="res://Assets/Remake.png" id="2_ce3w2"]
+[ext_resource type="FontFile" uid="uid://bex5d8i7c3ko" path="res://Assets/Fonts/Kenney Future Narrow.ttf" id="4_n45e2"]
+[ext_resource type="AudioStream" uid="uid://dyhgui0rey5t4" path="res://Assets/Musics/MainMenu.wav" id="5_n45e2"]
+[ext_resource type="AudioStream" uid="uid://cbux6knma4one" path="res://Assets/Sounds/Hover.wav" id="6_opfnp"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_ce3w2")
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0.54102784, 0.47772512, 0.8521372, 1)
+texture_repeat = 2
+position = Vector2(-1, -13)
+scale = Vector2(4, 4)
+texture = ExtResource("1_1ehe0")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 640, 640)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Logo" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(640, 300)
+texture = ExtResource("2_ce3w2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+custom_minimum_size = Vector2(20, 20)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = 59.0
+offset_right = 52.0
+offset_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Start" type="Button" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_n45e2")
+theme_override_font_sizes/font_size = 50
+text = "START"
+
+[node name="Quit" type="Button" parent="CanvasLayer/VBoxContainer"]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_n45e2")
+theme_override_font_sizes/font_size = 50
+text = "QUIT"
+
+[node name="BG_Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_n45e2")
+volume_db = -10.0
+autoplay = true
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_opfnp")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 555.0
+offset_top = 917.0
+offset_right = 1266.0
+offset_bottom = 949.0
+theme_override_colors/font_color = Color(0.7977378, 0.20906562, 0.84613574, 1)
+theme_override_fonts/font = ExtResource("4_n45e2")
+text = "\"Genesis\" by soma-animus (CC BY 4.0)  | \"MainTheme\" by Magic Eyes (CC BY 4.0)"
+horizontal_alignment = 1
+vertical_alignment = 1

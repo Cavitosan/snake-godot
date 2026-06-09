@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="SpaceCobra"
-run/main_scene="uid://e23lg7htgakd"
+run/main_scene="uid://dk77ctb8in3yb"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+AudioManager="*res://Scripts/audio_manager.gd"
+HighscoreManager="*res://Scripts/highscore_manager.gd"
 
 [display]
 

@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://na7qiyy078bi"]
+
+[ext_resource type="Script" uid="uid://dxll20myd2fmj" path="res://Scripts/particles_explosion.gd" id="1_egr1b"]
+
+[sub_resource type="Gradient" id="Gradient_04uw1"]
+colors = PackedColorArray(1, 0.7977378, 0.3491902, 1, 1, 0.7977378, 0.3491902, 0)
+
+[node name="ParticlesExplosion" type="CPUParticles2D"]
+emitting = false
+amount = 80
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 10.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+damping_min = 50.0
+damping_max = 150.0
+scale_amount_min = 10.0
+scale_amount_max = 30.0
+color = Color(1, 0.7977378, 0.3491902, 1)
+color_ramp = SubResource("Gradient_04uw1")
+script = ExtResource("1_egr1b")
+
+[node name="SmallParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 80
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 150.0
+initial_velocity_max = 400.0
+damping_min = 100.0
+damping_max = 350.0
+scale_amount_max = 3.0
+color = Color(1, 1, 0.29803923, 1)

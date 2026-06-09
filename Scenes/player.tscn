@@ -1,24 +1,55 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1g8k45bi8dg"]
+[gd_scene load_steps=9 format=3 uid="uid://d1g8k45bi8dg"]
 
 [ext_resource type="Script" uid="uid://b8rvc0yjc6iwc" path="res://Scripts/player.gd" id="1_cvnsp"]
-[ext_resource type="PackedScene" uid="uid://mq7wopjshvgd" path="res://Scenes/snake_middle.tscn" id="2_vgqql"]
-[ext_resource type="Texture2D" uid="uid://dmrm1hqy3kxis" path="res://Assets/SpriteHead2.png" id="4_vgqql"]
+[ext_resource type="Texture2D" uid="uid://g571t0i30dn8" path="res://Assets/SnakeEye.png" id="2_vgqql"]
+[ext_resource type="Script" uid="uid://coajjifis2v04" path="res://Scripts/color_manager.gd" id="3_6t5aa"]
+[ext_resource type="Script" uid="uid://bf7m8dd4ehfu3" path="res://Scripts/player_collision_manager.gd" id="4_vgqql"]
+[ext_resource type="PackedScene" uid="uid://na7qiyy078bi" path="res://Scenes/particles_explosion.tscn" id="5_fkybt"]
+[ext_resource type="PackedScene" uid="uid://bnnl4pdtevx0k" path="res://Scenes/game_over.tscn" id="6_x3wgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
-size = Vector2(64, 32)
+size = Vector2(93, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgqql"]
+size = Vector2(66, 20)
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
 collision_mask = 15
 script = ExtResource("1_cvnsp")
-segment_scene = ExtResource("2_vgqql")
 
-[node name="SnakeHead" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
-texture = ExtResource("4_vgqql")
+[node name="Line2D" type="Line2D" parent="."]
+width = 30.0
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="SnakeEye1" type="Sprite2D" parent="."]
+position = Vector2(-18, -11)
+texture = ExtResource("2_vgqql")
+
+[node name="SnakeEye2" type="Sprite2D" parent="."]
+position = Vector2(-18, 12)
+texture = ExtResource("2_vgqql")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 0)
+position = Vector2(-25.5, 0)
 shape = SubResource("RectangleShape2D_cvnsp")
 
-[node name="BodyContainer" type="Node2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_vgqql")
+debug_color = Color(0.85427934, 0.2855067, 0.59953994, 0.41960785)
+
+[node name="ColorManager" type="Node" parent="."]
+script = ExtResource("3_6t5aa")
+
+[node name="CollisionManager" type="Node" parent="."]
+script = ExtResource("4_vgqql")
+explosion_scene = ExtResource("5_fkybt")
+game_over_scene = ExtResource("6_x3wgy")
+
+[connection signal="area_entered" from="Area2D" to="CollisionManager" method="_on_area_2d_area_entered"]

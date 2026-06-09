@@ -1,9 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://e23lg7htgakd"]
+[gd_scene load_steps=13 format=3 uid="uid://e23lg7htgakd"]
 
 [ext_resource type="Texture2D" uid="uid://dn0afm2qd7hn7" path="res://Assets/background.png" id="1_ebmjs"]
 [ext_resource type="Script" uid="uid://y7yhhond0gew" path="res://Scripts/game.gd" id="1_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://16uoc2ah23o2" path="res://Scenes/food.tscn" id="2_3dryh"]
 [ext_resource type="PackedScene" uid="uid://d1g8k45bi8dg" path="res://Scenes/player.tscn" id="2_qxrlw"]
+[ext_resource type="PackedScene" uid="uid://n8u7ig0fwq82" path="res://Scenes/asteroides.tscn" id="5_wowpa"]
+[ext_resource type="PackedScene" uid="uid://b47lmhbw6qtup" path="res://Scenes/spawner_asteroide.tscn" id="6_i6g32"]
+[ext_resource type="Script" uid="uid://da4wu8bt8uhvi" path="res://Scripts/score_manager.gd" id="7_1l0tm"]
+[ext_resource type="Script" uid="uid://cpokqlni5y5ml" path="res://Scripts/canvas_layer.gd" id="8_h4fw4"]
+[ext_resource type="FontFile" uid="uid://bex5d8i7c3ko" path="res://Assets/Fonts/Kenney Future Narrow.ttf" id="9_ldgsr"]
+[ext_resource type="Script" uid="uid://cn4tul5ry4q6f" path="res://Scripts/music_manager.gd" id="10_ldgsr"]
+[ext_resource type="AudioStream" uid="uid://pjn8h7sm4fiy" path="res://Assets/Sounds/PickUp.wav" id="11_o5yvi"]
+[ext_resource type="AudioStream" uid="uid://b56h0w2ry5ity" path="res://Assets/Sounds/SpeedDown.mp3" id="12_rku1e"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_wrm1d")
@@ -23,3 +31,64 @@ position = Vector2(641, 482)
 
 [node name="Player" parent="." instance=ExtResource("2_qxrlw")]
 position = Vector2(318, 322)
+
+[node name="Asteroides" parent="." instance=ExtResource("5_wowpa")]
+
+[node name="Spawner_Asteroide" parent="." instance=ExtResource("6_i6g32")]
+
+[node name="ScoreManager" type="Node" parent="."]
+script = ExtResource("7_1l0tm")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("8_h4fw4")
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -131.0
+offset_right = 131.0
+offset_bottom = 29.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.8242755, 0.6638026, 0.103140764, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("9_ldgsr")
+theme_override_font_sizes/font_size = 25
+text = "TEST"
+horizontal_alignment = 1
+
+[node name="SpeedLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.5
+offset_top = -29.0
+offset_right = 100.5
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.8816408, 0.7048265, 0.16009894, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("9_ldgsr")
+theme_override_font_sizes/font_size = 25
+text = "TEST"
+horizontal_alignment = 1
+
+[node name="SoundManager" type="Node" parent="."]
+script = ExtResource("10_ldgsr")
+
+[node name="BG_Music" type="AudioStreamPlayer" parent="SoundManager"]
+volume_db = -3.0
+
+[node name="PickUp_Sound" type="AudioStreamPlayer" parent="SoundManager"]
+stream = ExtResource("11_o5yvi")
+volume_db = -10.0
+
+[node name="SpeedDown" type="AudioStreamPlayer" parent="SoundManager"]
+stream = ExtResource("12_rku1e")
+volume_db = -2.0
